@@ -20,6 +20,8 @@ async function getapi(url) {
     // Storing data in form of JSON
     var data = await response.json();
     console.log(data);
+
+    console.log("co: " + data.list[0].components.co);
     
     show(data);
 }
@@ -28,6 +30,6 @@ async function getapi(url) {
 getapi(weatherApiUrl);
   
 const show = (data) =>{
-    console.log(data.list[0].components.co);
+    
 } 
 
