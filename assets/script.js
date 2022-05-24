@@ -11,7 +11,7 @@ const nh3Value = document.getElementById("nh3-value");
 const submitButton = document.getElementById("submit-button");
 let outputAdress = "";
 let outputAqi = "";
-
+let cityInput = document.getElementById("input-city");
 
 
 
@@ -23,7 +23,7 @@ let outputAqi = "";
     .then(err => console.log(err));*/
 
 const getLocationCoordinates = () => {
-    let adress = document.getElementById("input-city").value;
+    let adress = cityInput.value;
     console.log(adress);
 
     //get position API
@@ -69,9 +69,6 @@ async function getWeatherApi(url) {
     setData(data);
 }
 
-// Calling that async function
-//getPositionApi(positionStackApiUrl);
-//getWeatherApi(weatherApiUrl);
   
 const setData = (data) =>{
 
@@ -91,4 +88,9 @@ const setData = (data) =>{
     //check values and set quality
 } 
 
+cityInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter"){
+        getLocationCoordinates();
+    }
+});
 submitButton.addEventListener("click", getLocationCoordinates);
