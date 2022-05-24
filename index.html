@@ -9,13 +9,66 @@
     <script type="module" defer src="assets/script.js"></script>
 </head>
 <body>
-    <header>
+    <div class="card">
         <h1>Air Polution</h1>
-    </header>
-    <main>
-        <input type="text" name="city" id="input-city">
-        <button id="submit-button">Submit</button>
-        <p id="weather-info-co"></p>
-    </main>
+
+        <div class="submitCity">
+            <label for="input-city">City Name </label>
+            <input type="text" name="city" id="input-city">
+            <button id="submit-button">Submit</button>
+        </div>
+        
+        <p id="weather-info-co">The air quality in "city" is "aqi"</p>
+        <table>
+            <tr>
+                <th>Pollutants</th>
+                <th>Value</th>
+                <th>Quality</th>
+            </tr>
+            <tr>
+                <td>CO (Carbon monoxide)</td>
+                <td id="co-value"></td>
+                <td id="co-quality"></td>
+            </tr>
+            <tr>
+                <td>NO (Nitrogen monoxide)</td>
+                <td id="no-value"></td>
+                <td id="no-quality"></td>
+            </tr>
+            <tr>
+                <td>NO2 (Nitrogen dioxide)</td>
+                <td id="no2-value"></td>
+                <td id="no2-quality"></td>
+              </tr>
+              <tr>
+                <td>O3 (Ozone)</td>
+                <td id="o3-value"></td>
+                <td id="o3-quality"></td>
+              </tr>
+              <tr>
+                <td>SO2 (Sulphur dioxide)</td>
+                <td id="so2-value"></td>
+                <td id="so2-quality"></td>
+              </tr>
+              <tr>
+                <td>PM2.5 (Fine particles matter)</td>
+                <td id="pm25-value"></td>
+                <td id="pm25-quality"></td>
+              </tr>
+              <tr>
+                <td>PM10 (Coarse particulate matter)</td>
+                <td id="pm10-value"></td>
+                <td id="pm10-quality"></td>
+              </tr>
+              <tr>
+                <td>NH3 (Ammonia)</td>
+                <td id="nh3-value"></td>
+                <td id="nh3-quality"></td>
+              </tr>
+          </table>
+
+    </div>
+       
+    
 </body>
 </html>
