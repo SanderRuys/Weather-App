@@ -1,4 +1,7 @@
 import { Weather_API_key, PositionStack_API_Key } from './config.js';
+const cityName = document.getElementById("city-name");
+const foreCastIcon = document.getElementById("forecast-icon");
+console.log("forecast icon= " + foreCastIcon);
 const weatherInfo = document.getElementById("weather-info");
 const coValue = document.getElementById("co-value");
 const coQuality = document.getElementById("co-quality");
@@ -19,7 +22,9 @@ const nh3Quality = document.getElementById("nh3-quality");
 const submitButton = document.getElementById("submit-button");
 let outputAdress = "";
 let outputAqi = "";
+let currentWeatherIcon;
 let cityInput = document.getElementById("input-city");
+
 
 //TODO
 // add weather API
@@ -60,9 +65,36 @@ async function getPositionApi(url) {
     outputAdress = data.data[0].label;
     console.log("adres = " + outputAdress);
 
+    //cityName.innerText = data.data[0].locality;
+    console.log("gemeente= " + data.data[0].locality);
+
     // call weather API
+    const oneCallApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely}&units=metric&appid=${Weather_API_key}`;
+    getOneCallApi(oneCallApiUrl);
     const weatherApiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${Weather_API_key}`;
     getWeatherApi(weatherApiUrl);
+}
+
+async function getOneCallApi(url) {
+    const response = await fetch(url);
+    let data = await response.json();
+    console.log(data);
+
+    
+    setWeatherData(data);
+}
+
+const setWeatherData = (data) => {
+    currentWeatherIcon = data.current.weather[0].main;
+    switch (currentWeatherIcon) {
+        case "Clouds":
+            
+            foreCastIcon.src = "assets/Clouds.png";
+            break;
+    
+        default:
+            break;
+    }
 }
 
 // Defining async function
