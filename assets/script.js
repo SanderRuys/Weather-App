@@ -21,7 +21,6 @@ let outputAqi = "";
 let cityInput = document.getElementById("input-city");
 
 //TODO
-// 1) air quality colors
 // add weather API
 // add unsplash API
 // remeber users choice on subsequent visits
@@ -110,116 +109,152 @@ const setData = (data) =>{
     //no2
     if (no2Data <= 25){
         no2Quality.innerText = "Excellent";
+        no2Quality.classList.add("excellent");
     }
     else if (no2Data >= 25 && no2Data <= 50){
         no2Quality.innerText = "Fine";
+        no2Quality.classList.add("fine");
     }
     else if (no2Data >= 50 && no2Data <= 100){
         no2Quality.innerText = "Moderate";
+        no2Quality.classList.add("moderate");
     }
     else if (no2Data >= 100 && no2Data <= 200){
         no2Quality.innerText = "Poor";
+        no2Quality.classList.add("poor");
     }
     else if (no2Data >= 200 && no2Data <= 400){
         no2Quality.innerText = "Very poor";
+        no2Quality.classList.add("veryPoor");
     }
     else{
         no2Quality.innerText = "Severe";
+        no2Quality.classList.add("severe");
     }
     //O3
     if (o3Data <= 33){
         o3Quality.innerText = "Excellent";
+        o3Quality.classList.add("excellent");
     }
     else if (o3Data >= 33 && o3Data <= 65){
         o3Quality.innerText = "Fine";
+        o3Quality.classList.add("fine");
     }
     else if (o3Data >= 65 && o3Data <= 120){
         o3Quality.innerText = "Moderate";
+        o3Quality.classList.add("moderate");
     }
     else if (o3Data >= 120 && o3Data <= 180){
         o3Quality.innerText = "Poor";
+        o3Quality.classList.add("poor");
     }
     else if (o3Data >= 180 && o3Data <= 240){
         o3Quality.innerText = "Very poor";
+        o3Quality.classList.add("veryPoor");
     }
     else {
         o3Quality.innerText = "Severe";
+        o3Quality.classList.add("severe");
     }
     //SO2
     if (so2Data <= 25){
         so2Quality.innerText = "Excellent";
+        so2Quality.classList.add("excellent");
     }
     else if (so2Data >= 25 && so2Data <= 50){
         so2Quality.innerText = "Fine";
+        so2Quality.classList.add("fine");
     }
     else if (so2Data >= 50 && so2Data <= 120){
         so2Quality.innerText = "Moderate";
+        so2Quality.classList.add("moderate");
     }
     else if (so2Data >= 120 && so2Data <= 350){
         so2Quality.innerText = "Poor";
+        so2Quality.classList.add("poor");
     }
     else if (so2Data >= 350 && so2Data <= 500){
         so2Quality.innerText = "Very poor";
+        so2Quality.classList.add("veryPoor");
     }
     else {
         so2Quality.innerText = "Severe";
+        so2Quality.classList.add("severe");
     }
     //PM2.5
     if ( pm25Data <= 7){
         pm25Quality.innerText = "Excellent";
+        pm25Quality.classList.add("excellent");
     }
     else if (pm25Data >= 7 && pm25Data <= 15){
         pm25Quality.innerText = "Fine";
+        pm25Quality.classList.add("fine");
     }
     else if (pm25Data >= 15 && pm25Data <= 30){
         pm25Quality.innerText = "Moderate";
+        pm25Quality.classList.add("moderate");
     }
     else if (pm25Data >= 30 && pm25Data <= 55){
         pm25Quality.innerText = "Poor";
+        pm25Quality.classList.add("poor");
     }
     else if (pm25Data >= 55 && pm25Data <= 110){
         pm25Quality.innerText = "Very poor";
+        pm25Quality.classList.add("veryPoor");
     }
     else {
         pm25Quality.innerText = "Severe";
+        pm25Quality.classList.add("severe");
     }
     //PM10
     if ( pm10Data <= 12){
         pm10Quality.innerText = "Excellent";
+        pm10Quality.classList.add("excellent");
     }
     else if (pm10Data >= 12 && pm10Data <= 25){
         pm10Quality.innerText = "Fine";
+        pm10Quality.classList.add("fine");
     }
     else if (pm10Data >= 25 && pm10Data <= 50){
         pm10Quality.innerText = "Moderate";
+        pm10Quality.classList.add("moderate");
     }
     else if (pm10Data >= 50 && pm10Data <= 90){
         pm10Quality.innerText = "Poor";
+        pm10Quality.classList.add("poor");
     }
     else if (pm10Data >= 90 && pm10Data <= 180){
         pm10Quality.innerText = "Very poor";
+        pm10Quality.classList.add("veryPoor");
     }
     else {
         pm10Quality.innerText = "Severe";
+        pm10Quality.classList.add("severe");
     }
     //NH3
     if ( nh3Data <= 3){
         nh3Quality.innerText = "Excellent";
+        nh3Quality.classList.add("excellent");
     }
     else if (nh3Data >= 3 && nh3Data <= 7.5){
         nh3Quality.innerText = "Fine";
+        nh3Quality.classList.add("fine");
     }
     else if (nh3Data >= 7.5 && nh3Data <= 37.5){
         nh3Quality.innerText = "Moderate";
+        nh3Quality.classList.add("moderate");
     }
     else if (nh3Data >= 37.5 && nh3Data <= 15000){
         nh3Quality.innerText = "Poor";
+        nh3Quality.classList.add("poor");
     }
     else if (nh3Data >= 15000 && nh3Data <= 150000){
         nh3Quality.innerText = "Very poor";
+        nh3Quality.classList.add("veryPoor");
     }
     else {
         nh3Quality.innerText = "Severe";
+        nh3Quality.classList.add("severe");
     }
 } 
 
