@@ -6,12 +6,12 @@ body{
     justify-content: center;
 }
 
-h1{
+h2{
     text-align: center;
 }
 .card{
-    background-color: aliceblue;
-    color:rgb(40, 40, 43);
+    background-color: rgb(41,171,226);
+    color:aliceblue;
     width: 70ch;
     margin: auto;
     display: flex;
@@ -25,10 +25,16 @@ h1{
     text-align: center;
 }
 .submitCity{
+    margin-top: 5vmin;
     display: flex;
     flex-direction: row;
     justify-content: center;
     
+}
+#forecast-icon{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }
 th, td{
     border-color: lightslategrey;

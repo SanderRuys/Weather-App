@@ -88,8 +88,22 @@ const setWeatherData = (data) => {
     currentWeatherIcon = data.current.weather[0].main;
     switch (currentWeatherIcon) {
         case "Clouds":
-            
             foreCastIcon.src = "assets/Clouds.png";
+            break;
+        case "Clear":
+            foreCastIcon.src = "assets/Sun.png";
+            break;
+        case "Snow":
+            foreCastIcon.src = "assets/Snow.png";
+            break;
+        case "Rain":
+            foreCastIcon.src = "assets/Rain.png"
+            break;
+        case "Drizzle":
+            foreCastIcon.src = "assets/Rain.png"
+            break;
+        case "Thunderstorm":
+            foreCastIcon.src = "assets/Thunder.png"
             break;
     
         default:
