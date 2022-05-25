@@ -10,62 +10,67 @@
 </head>
 <body>
     <div class="card">
-        <h1>Air Polution</h1>
+      <div class="submitCity">
+          <label for="input-city">Enter adress or city:  </label>
+          <input type="text" name="city" id="input-city">
+          <button id="submit-button">Submit</button>
+      </div>
+      <h1>Weather info</h1>
+      
 
-        <div class="submitCity">
-            <label for="input-city">Adress/ City: </label>
-            <input type="text" name="city" id="input-city">
-            <button id="submit-button">Submit</button>
-        </div>
-        
-        <p id="weather-info">The air quality...</p>
-        <table>
-            <tr>
-                <th>Pollutants</th>
-                <th>Value</th>
-                <th>Quality</th>
+
+      <h1>Air Polution</h1>
+      
+      <p id="weather-info">The air quality...</p>
+      <table>
+          <tr>
+              <th>Pollutants</th>
+              <th>Value</th>
+              <th>Quality</th>
+          </tr>
+          <tr>
+              <td>CO (Carbon monoxide)</td>
+              <td id="co-value"></td>
+              <td id="co-quality"></td>
+          </tr>
+          <tr>
+              <td>NO (Nitrogen monoxide)</td>
+              <td id="no-value"></td>
+              <td id="no-quality"></td>
+          </tr>
+          <tr>
+              <td>NO2 (Nitrogen dioxide)</td>
+              <td id="no2-value"></td>
+              <td id="no2-quality"></td>
             </tr>
             <tr>
-                <td>CO (Carbon monoxide)</td>
-                <td id="co-value"></td>
-                <td id="co-quality"></td>
+              <td>O3 (Ozone)</td>
+              <td id="o3-value"></td>
+              <td id="o3-quality"></td>
             </tr>
             <tr>
-                <td>NO (Nitrogen monoxide)</td>
-                <td id="no-value"></td>
-                <td id="no-quality"></td>
+              <td>SO2 (Sulphur dioxide)</td>
+              <td id="so2-value"></td>
+              <td id="so2-quality"></td>
             </tr>
             <tr>
-                <td>NO2 (Nitrogen dioxide)</td>
-                <td id="no2-value"></td>
-                <td id="no2-quality"></td>
-              </tr>
-              <tr>
-                <td>O3 (Ozone)</td>
-                <td id="o3-value"></td>
-                <td id="o3-quality"></td>
-              </tr>
-              <tr>
-                <td>SO2 (Sulphur dioxide)</td>
-                <td id="so2-value"></td>
-                <td id="so2-quality"></td>
-              </tr>
-              <tr>
-                <td>PM2.5 (Fine particles matter)</td>
-                <td id="pm25-value"></td>
-                <td id="pm25-quality"></td>
-              </tr>
-              <tr>
-                <td>PM10 (Coarse particulate matter)</td>
-                <td id="pm10-value"></td>
-                <td id="pm10-quality"></td>
-              </tr>
-              <tr>
-                <td>NH3 (Ammonia)</td>
-                <td id="nh3-value"></td>
-                <td id="nh3-quality"></td>
-              </tr>
-          </table>
+              <td>PM2.5 (Fine particles matter)</td>
+              <td id="pm25-value"></td>
+              <td id="pm25-quality"></td>
+            </tr>
+            <tr>
+              <td>PM10 (Coarse particulate matter)</td>
+              <td id="pm10-value"></td>
+              <td id="pm10-quality"></td>
+            </tr>
+            <tr>
+              <td>NH3 (Ammonia)</td>
+              <td id="nh3-value"></td>
+              <td id="nh3-quality"></td>
+            </tr>
+        </table>
+
+
 
     </div>
        

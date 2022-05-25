@@ -1,6 +1,7 @@
 import { Weather_API_key, PositionStack_API_Key } from './config.js';
 const weatherInfo = document.getElementById("weather-info");
 const coValue = document.getElementById("co-value");
+const coQuality = document.getElementById("co-quality");
 const noValue = document.getElementById("no-value");
 const noQuality = document.getElementById("no-quality");
 const no2Value = document.getElementById("no2-value");
@@ -84,7 +85,24 @@ async function getWeatherApi(url) {
 const setData = (data) =>{
 
     //set tekst
-    weatherInfo.innerHTML = `The air quality in ${outputAdress} is  ${outputAqi}. `;
+    switch (outputAqi) {
+        case 1:
+            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  good. `;
+            break;
+        case 2:
+            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  fair. `;
+            break;
+        case 3:
+            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  moderate. `;
+            break;
+        case 4:
+            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  poor. `;
+            break;
+        default:
+            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  very poor. `;
+            break;
+    }
+   
 
     //set values
     coValue.innerText = data.list[0].components.co;
@@ -106,6 +124,31 @@ const setData = (data) =>{
     const pm10Data = data.list[0].components.pm10;
     const nh3Data = data.list[0].components.nh3;
     //check values and set quality
+    //co
+    if (coData <= 1000){
+        coQuality.innerText = "Excellent";
+        coQuality.classList.add("excellent");
+    }
+    else if (coData >= 1000 && coData <= 2000){
+        coQuality.innerText = "Fine";
+        coQuality.classList.add("fine");
+    }
+    else if (coData >= 2000 && coData <= 4000){
+        coQuality.innerText = "Moderate";
+        coQuality.classList.add("moderate");
+    }
+    else if (coData >= 4000 && coData <= 10000){
+        coQuality.innerText = "Poor";
+        coQuality.classList.add("poor");
+    }
+    else if (coData >= 10000 && coData <= 30000){
+        coQuality.innerText = "Very poor";
+        coQuality.classList.add("veryPoor");
+    }
+    else {
+        coQuality.innerText = "Severe";
+        coQuality.classList.add("severe");
+    }
     //no2
     if (no2Data <= 25){
         no2Quality.innerText = "Excellent";
