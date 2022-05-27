@@ -31,21 +31,10 @@ let foreCastIconAlt = "#";
 let cityName = "";
 
 
-
-//TODO
-// add weather API
-// add unsplash API
-// remeber users choice on subsequent visits
-// compare weather
-
-
-
 /*fetch(positionStackApiUrl)
     .then(response => response.json())
     .then(data => console.log(data))
     .then(err => console.log(err));*/
-
-
 
 
 const getLocationCoordinates = () => {
@@ -178,8 +167,7 @@ async function getWeatherApi(url) {
     console.log("aqi= " + outputAqi);
     setData(data);
 }
-
-  
+ 
 const setData = (data) =>{
 
     //set tekst
@@ -201,7 +189,6 @@ const setData = (data) =>{
             break;
     }
    
-
     //set values
     coValue.innerText = data.list[0].components.co;
     noValue.innerText = data.list[0].components.no;
@@ -373,7 +360,7 @@ const setData = (data) =>{
         pm10Quality.classList.add("severe");
     }
     //NH3
-    if ( nh3Data <= 3){
+    if (nh3Data <= 3){
         nh3Quality.innerText = "Excellent";
         nh3Quality.classList.add("excellent");
     }
