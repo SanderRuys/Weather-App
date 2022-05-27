@@ -1,7 +1,7 @@
 import { Weather_API_key, PositionStack_API_Key } from './config.js';
 const cityName = document.getElementById("city-name");
-const foreCastIcon = document.getElementById("forecast-icon");
-console.log("forecast icon= " + foreCastIcon);
+
+const weatherCard = document.querySelector(".weatherCard");
 const weatherInfo = document.getElementById("weather-info");
 const coValue = document.getElementById("co-value");
 const coQuality = document.getElementById("co-quality");
@@ -24,6 +24,9 @@ let outputAdress = "";
 let outputAqi = "";
 let currentWeatherIcon;
 let cityInput = document.getElementById("input-city");
+let foreCastIconSrc = "#";
+let foreCastIconAlt = "#";
+
 
 
 //TODO
@@ -38,6 +41,9 @@ let cityInput = document.getElementById("input-city");
     .then(response => response.json())
     .then(data => console.log(data))
     .then(err => console.log(err));*/
+
+
+
 
 const getLocationCoordinates = () => {
     let adress = cityInput.value;
@@ -82,33 +88,62 @@ async function getOneCallApi(url) {
 
     
     setWeatherData(data);
+    createWeather(data, foreCastIconSrc, foreCastIconAlt);
+    console.log("WeatherData= " + foreCastIconSrc);
+    
 }
 
 const setWeatherData = (data) => {
     currentWeatherIcon = data.current.weather[0].main;
     switch (currentWeatherIcon) {
         case "Clouds":
-            foreCastIcon.src = "assets/Clouds.png";
+            foreCastIconSrc = "assets/Clouds.png";
             break;
         case "Clear":
-            foreCastIcon.src = "assets/Sun.png";
+            foreCastIconSrc = "assets/Sun.png";
             break;
         case "Snow":
-            foreCastIcon.src = "assets/Snow.png";
+            foreCastIconSrc = "assets/Snow.png";
             break;
         case "Rain":
-            foreCastIcon.src = "assets/Rain.png"
+            foreCastIconSrc = "assets/Rain.png"
             break;
         case "Drizzle":
-            foreCastIcon.src = "assets/Rain.png"
+            foreCastIconSrc = "assets/Rain.png"
             break;
         case "Thunderstorm":
-            foreCastIcon.src = "assets/Thunder.png"
+            foreCastIconSrc = "assets/Thunder.png"
             break;
     
         default:
             break;
     }
+}
+
+const createWeather = (data, iconSrc, iconAlt) =>{
+    let code = `
+        <h1 id="city-name">Hallo</h1>
+        <img src="${iconSrc}" alt="${iconAlt}" id="forecast-icon">
+        <p id="forecast-degrees"></p>
+        <p id="forecast-description"></p>
+        <div class="feelsLike">
+            <img src="${iconSrc}" alt="${iconAlt}" id="feels-like-icon">
+            <p id="feels-like-text">Feels Like</p>
+            <p id="feels-like-degrees"></p>
+        </div>
+        <div class="humidity">
+            <img src="assets/Humidity.png" alt="Humidity icon" id="humidity-icon">
+            <p id="humidity-text">Humidity</p>
+            <p id="humidity-degrees"></p>
+        </div>
+        <div class="wind">
+            <img src="assets/Wind.png" alt="Wind icon" id="humidity-icon">
+            <p id="humidity-text">Wind</p>
+            <p id="humidity-degrees"></p>
+        </div>
+        `;
+        weatherCard.innerHTML += code;
+        console.log("weathercard runt");
 }
 
 // Defining async function
