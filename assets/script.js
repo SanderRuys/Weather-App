@@ -185,19 +185,19 @@ const setData = (data) =>{
     //set tekst
     switch (outputAqi) {
         case 1:
-            airInfo.innerHTML = `The air quality in ${outputAdress} is  good. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="excellent">good</span>. `;
             break;
         case 2:
-            airInfo.innerHTML = `The air quality in ${outputAdress} is  fair. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="fine">fair</span>. `;
             break;
         case 3:
-            airInfo.innerHTML = `The air quality in ${outputAdress} is  moderate. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="moderate">moderate</span>. `;
             break;
         case 4:
-            airInfo.innerHTML = `The air quality in ${outputAdress} is  poor. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="poor">poor</span>. `;
             break;
         default:
-            airInfo.innerHTML = `The air quality in ${outputAdress} is  very poor. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="Severe">very poor</span>. `;
             break;
     }
    

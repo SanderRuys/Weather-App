@@ -18,6 +18,7 @@ body{
     color:aliceblue;
     width: 70ch;
     margin-top: 2vmin;
+    margin-bottom: 2vmin;
     display: flex;
     flex-direction: column;
     border-width: 0.25rem;
@@ -39,6 +40,27 @@ body{
     font-size: 1.4rem;
     text-align: center;
 }
+
+input{
+    border-color: aliceblue;
+    border-style: solid;
+    border-radius: 0.2em;
+    color: rgb(68, 127, 203);
+}
+button{
+    background-color: rgb(68, 127, 203);
+    color:aliceblue;
+    border-color: aliceblue;
+    border-style: solid;
+    border-radius: 0.2em;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+button:active{
+    transform: translateY(0.2em); 
+    box-shadow: 0 -0.2em lightslategrey;;
+}
+
 #weather-forecast-title{
     margin-bottom: 1.2vmin;
 }
@@ -110,6 +132,9 @@ main{
     margin-right: 0.6em;
     font-weight: 300;
 }
+#feels-like-degrees, #humidity-percent, #wind-speed, #uv-index{
+    font-weight: 600;
+}
 
 #air-polution-title{
     margin-top: 3vmin;
@@ -135,26 +160,26 @@ th, td{
     padding: 0.3em;
 }
 .excellent{
-    background-color: rgb(0,228,0);
+    background-color: rgb(0,228,0, 0.7);
     color: rgb(42, 43, 53);
 }
 .fine{
-    background-color: rgb(255,255,0);
+    background-color: rgb(255,255,0,0.7);
     color: rgb(42, 43, 53);
 }
 .moderate{
-    background-color: rgb(255,126,0);
+    background-color: rgb(255,126,0, 0.7);
     color: rgb(42, 43, 53);
 }
 .poor{
-    background-color: rgb(255,0,0);
+    background-color: rgb(255,0,0, 0.7);
     color: rgb(237,255,255);
 }
 .veryPoor{
-    background-color: rgb(143,63,151);
+    background-color: rgb(143,63,151, 0.7);
     color: rgb(237,255,255);
 }
 .Severe{
-    background-color: rgb(126,0,35);
+    background-color: rgb(126,0,35, 0.7);
     color: rgb(237,255,255);
 }
