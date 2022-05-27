@@ -2,7 +2,9 @@ import { Weather_API_key, PositionStack_API_Key } from './config.js';
 
 
 const weatherCard = document.querySelector(".weatherCard");
-const weatherInfo = document.getElementById("weather-info");
+const main = document.querySelector("main");
+main.style.visibility = "hidden";
+const airInfo = document.getElementById("air-info");
 const coValue = document.getElementById("co-value");
 const coQuality = document.getElementById("co-quality");
 const noValue = document.getElementById("no-value");
@@ -50,6 +52,8 @@ const getLocationCoordinates = () => {
     let adress = cityInput.value;
     console.log(adress);
 
+    //set main to visible
+    main.style.visibility = "visible";    
     //get position API
     const positionStackApiUrl = `http://api.positionstack.com/v1/forward?access_key=${PositionStack_API_Key}&query=${adress}`;
     getPositionApi(positionStackApiUrl);
@@ -100,21 +104,27 @@ const setWeatherData = (data) => {
     switch (currentWeatherIcon) {
         case "Clouds":
             foreCastIconSrc = "assets/Clouds.png";
+            foreCastIconAlt = "Icon of clouds";
             break;
         case "Clear":
             foreCastIconSrc = "assets/Sun.png";
+            foreCastIconAlt = "Icon of the sun";
             break;
         case "Snow":
             foreCastIconSrc = "assets/Snow.png";
+            foreCastIconAlt = "Icon of snow clouds";
             break;
         case "Rain":
-            foreCastIconSrc = "assets/Rain.png"
+            foreCastIconSrc = "assets/Rain.png";
+            foreCastIconAlt = "Icon of rain clouds";
             break;
         case "Drizzle":
-            foreCastIconSrc = "assets/Rain.png"
+            foreCastIconSrc = "assets/Rain.png";
+            foreCastIconAlt = "Icon of rain clouds";
             break;
         case "Thunderstorm":
-            foreCastIconSrc = "assets/Thunder.png"
+            foreCastIconSrc = "assets/Thunder.png";
+            foreCastIconAlt = "Icon of thunder clouds";
             break;
     
         default:
@@ -149,7 +159,7 @@ const createWeather = (data, iconSrc, iconAlt, cityName) =>{
             <p id="uv-index">${data.current.uvi}</p>
         </div>
         `;
-        weatherCard.innerHTML += code;
+        weatherCard.innerHTML = code;
         console.log("weathercard runt");
 }
 
@@ -175,19 +185,19 @@ const setData = (data) =>{
     //set tekst
     switch (outputAqi) {
         case 1:
-            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  good. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  good. `;
             break;
         case 2:
-            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  fair. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  fair. `;
             break;
         case 3:
-            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  moderate. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  moderate. `;
             break;
         case 4:
-            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  poor. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  poor. `;
             break;
         default:
-            weatherInfo.innerHTML = `The air quality in ${outputAdress} is  very poor. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  very poor. `;
             break;
     }
    

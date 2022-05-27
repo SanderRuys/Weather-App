@@ -5,25 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Polution</title>
+    <link rel="stylesheet" href="assets/normalise.css">
     <link rel="stylesheet" href="assets/style.css">
     <script type="module" defer src="assets/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="card">
       <div class="submitCity">
-          <label for="input-city">Enter adress or city:  </label>
-          <input type="text" name="city" id="input-city">
-          <button id="submit-button">Submit</button>
+          <h2 id="weather-forecast-title">Weather forecast</h2>
+          <label for="input-city">Search for adress and&#47;or city:</label>
+          <div class="textInput">
+            <input type="text" name="city" id="input-city">
+            <button id="submit-button">Submit</button>
+          </div>
       </div>
-      <h2>Weather forecast</h2>
-      <div class="weatherCard">
+      <main>
+        <h2>Current Weather</h2>
+        <div class="weatherCard">
 
-      </div>
-      
-      <h2>Air Polution</h2>
-      
-      <p id="weather-info">The air quality...</p>
-      <table>
+        </div>
+        
+        <h2 id="air-polution-title">Air Polution</h2>
+        
+        <p id="air-info">The air quality...</p>
+        <table>
           <tr>
               <th>Pollutants</th>
               <th>Value</th>
@@ -70,11 +78,7 @@
               <td id="nh3-quality"></td>
             </tr>
         </table>
-
-
-
+      </main>
     </div>
-       
-    
 </body>
 </html>
