@@ -1,42 +1,17 @@
 import { Weather_API_key, PositionStack_API_Key } from './config.js';
 
-
-const weatherCard = document.querySelector(".weatherCard");
 const main = document.querySelector("main");
 main.style.visibility = "hidden";
-const airInfo = document.getElementById("air-info");
-const coValue = document.getElementById("co-value");
-const coQuality = document.getElementById("co-quality");
-const noValue = document.getElementById("no-value");
-const noQuality = document.getElementById("no-quality");
-const no2Value = document.getElementById("no2-value");
-const no2Quality = document.getElementById("no2-quality");
-const o3Value = document.getElementById("o3-value");
-const o3Quality = document.getElementById("o3-quality");
-const so2Value = document.getElementById("so2-value");
-const so2Quality = document.getElementById("so2-quality");
-const pm25Value = document.getElementById("pm25-value");
-const pm25Quality = document.getElementById("pm25-quality");
-const pm10Value = document.getElementById("pm10-value");
-const pm10Quality = document.getElementById("pm10-quality");
-const nh3Value = document.getElementById("nh3-value");
-const nh3Quality = document.getElementById("nh3-quality");
 const submitButton = document.getElementById("submit-button");
 let outputAdress = "";
 let outputAqi = "";
-let currentWeatherIcon;
 let cityInput = document.getElementById("input-city");
 let foreCastIconSrc = "#";
 let foreCastIconAlt = "#";
 let cityName = "";
 
 
-/*fetch(positionStackApiUrl)
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .then(err => console.log(err));*/
-
-
+//first function to start after Enter press or button click
 const getLocationCoordinates = () => {
     let adress = cityInput.value;
     console.log(adress);
@@ -81,15 +56,30 @@ async function getOneCallApi(url) {
     let data = await response.json();
     console.log(data);
 
-    
     setWeatherData(data);
     createWeather(data, foreCastIconSrc, foreCastIconAlt, cityName);
     console.log("WeatherData= " + foreCastIconSrc);
+}
+
+// Defining async function
+async function getWeatherApi(url) {
     
+    // Storing response
+    const response = await fetch(url);
+    
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log(data);
+
+    //setting all data
+    outputAqi = data.list[0].main.aqi;
+    console.log("aqi= " + outputAqi);
+    setData(data);
 }
 
 const setWeatherData = (data) => {
-    currentWeatherIcon = data.current.weather[0].main;
+    const currentWeatherIcon = data.current.weather[0].main;
+    console.log("Weather Icon = " + currentWeatherIcon);
     switch (currentWeatherIcon) {
         case "Clouds":
             foreCastIconSrc = "assets/Clouds.png";
@@ -115,13 +105,19 @@ const setWeatherData = (data) => {
             foreCastIconSrc = "assets/Thunder.png";
             foreCastIconAlt = "Icon of thunder clouds";
             break;
-    
+        case "Tornado":
+            foreCastIconSrc = "assets/Tornado.png";
+            foreCastIconAlt = "Icon of a tornado";
+            break;
         default:
+            foreCastIconSrc = "assets/Mist.png";
+            foreCastIconAlt = "Icon of misty clouds";
             break;
     }
 }
 
 const createWeather = (data, iconSrc, iconAlt, cityName) =>{
+    const weatherCard = document.querySelector(".weatherCard");
     let code = `
         <h1 id="city-name">${cityName}</h1>
         <img src="${iconSrc}" alt="${iconAlt}" id="forecast-icon">
@@ -151,25 +147,9 @@ const createWeather = (data, iconSrc, iconAlt, cityName) =>{
         weatherCard.innerHTML = code;
         console.log("weathercard runt");
 }
-
-// Defining async function
-async function getWeatherApi(url) {
-    
-    // Storing response
-    const response = await fetch(url);
-    
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log(data);
-
-    //setting all data
-    outputAqi = data.list[0].main.aqi;
-    console.log("aqi= " + outputAqi);
-    setData(data);
-}
  
 const setData = (data) =>{
-
+    const airInfo = document.getElementById("air-info");
     //set tekst
     switch (outputAqi) {
         case 1:
@@ -188,28 +168,32 @@ const setData = (data) =>{
             airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="Severe">very poor</span>. `;
             break;
     }
-   
+
     //set values
-    coValue.innerText = data.list[0].components.co;
-    noValue.innerText = data.list[0].components.no;
-    no2Value.innerText = data.list[0].components.no2;
-    o3Value.innerText = data.list[0].components.o3;
-    so2Value.innerText = data.list[0].components.so2;
-    pm25Value.innerText = data.list[0].components.pm2_5;
-    pm10Value.innerText = data.list[0].components.pm10;
-    nh3Value.innerText = data.list[0].components.nh3;
+    document.getElementById("co-value").innerText = data.list[0].components.co;
+    document.getElementById("no-value").innerText = data.list[0].components.no;
+    document.getElementById("no2-value").innerText = data.list[0].components.no2;
+    document.getElementById("o3-value").innerText = data.list[0].components.o3;
+    document.getElementById("so2-value").innerText = data.list[0].components.so2;
+    document.getElementById("pm25-value").innerText = data.list[0].components.pm2_5;
+    document.getElementById("pm10-value").innerText = data.list[0].components.pm10;
+    document.getElementById("nh3-value").innerText = data.list[0].components.nh3;
 
     //put data in variables
-    const coData = data.list[0].components.co;
-    const noData = data.list[0].components.no;
-    const no2Data = data.list[0].components.no2;
-    const o3Data = data.list[0].components.o3;
-    const so2Data = data.list[0].components.so2;
-    const pm25Data = data.list[0].components.pm2_5;
-    const pm10Data = data.list[0].components.pm10;
-    const nh3Data = data.list[0].components.nh3;
+    let coData = data.list[0].components.co;
+    let no2Data = data.list[0].components.no2;
+    let o3Data = data.list[0].components.o3;
+    let so2Data = data.list[0].components.so2;
+    let pm25Data = data.list[0].components.pm2_5;
+    let pm10Data = data.list[0].components.pm10;
+    let nh3Data = data.list[0].components.nh3;
     //check values and set quality
+
+    //TODO Check and remove classlist function
+    
+
     //co
+    const coQuality = document.getElementById("co-quality");
     if (coData <= 1000){
         coQuality.innerText = "Excellent";
         coQuality.classList.add("excellent");
@@ -235,6 +219,7 @@ const setData = (data) =>{
         coQuality.classList.add("severe");
     }
     //no2
+    const no2Quality = document.getElementById("no2-quality");
     if (no2Data <= 25){
         no2Quality.innerText = "Excellent";
         no2Quality.classList.add("excellent");
@@ -260,6 +245,7 @@ const setData = (data) =>{
         no2Quality.classList.add("severe");
     }
     //O3
+    const o3Quality = document.getElementById("o3-quality");
     if (o3Data <= 33){
         o3Quality.innerText = "Excellent";
         o3Quality.classList.add("excellent");
@@ -285,6 +271,7 @@ const setData = (data) =>{
         o3Quality.classList.add("severe");
     }
     //SO2
+    const so2Quality = document.getElementById("so2-quality");
     if (so2Data <= 25){
         so2Quality.innerText = "Excellent";
         so2Quality.classList.add("excellent");
@@ -310,6 +297,7 @@ const setData = (data) =>{
         so2Quality.classList.add("severe");
     }
     //PM2.5
+    const pm25Quality = document.getElementById("pm25-quality");
     if ( pm25Data <= 7){
         pm25Quality.innerText = "Excellent";
         pm25Quality.classList.add("excellent");
@@ -335,6 +323,7 @@ const setData = (data) =>{
         pm25Quality.classList.add("severe");
     }
     //PM10
+    const pm10Quality = document.getElementById("pm10-quality");
     if ( pm10Data <= 12){
         pm10Quality.innerText = "Excellent";
         pm10Quality.classList.add("excellent");
@@ -360,6 +349,7 @@ const setData = (data) =>{
         pm10Quality.classList.add("severe");
     }
     //NH3
+    const nh3Quality = document.getElementById("nh3-quality");
     if (nh3Data <= 3){
         nh3Quality.innerText = "Excellent";
         nh3Quality.classList.add("excellent");
@@ -384,6 +374,7 @@ const setData = (data) =>{
         nh3Quality.innerText = "Severe";
         nh3Quality.classList.add("severe");
     }
+
 } 
 
 cityInput.addEventListener("keypress", function(event) {
