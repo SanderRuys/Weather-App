@@ -187,13 +187,81 @@ const setData = (data) =>{
     let pm25Data = data.list[0].components.pm2_5;
     let pm10Data = data.list[0].components.pm10;
     let nh3Data = data.list[0].components.nh3;
-    //check values and set quality
-
-    //TODO Check and remove classlist function
     
+    //TODO Check and remove classlist function
+    const removeClassLists = (quality) =>{
+        
+        if (quality.classList.contains("excellent")){
+            quality.classList.remove("excellent");
+        }
+        else if (quality.classList.contains("fine")){
+            quality.classList.remove("fine");
+        }
+        else if (quality.classList.contains("moderate")){
+            quality.classList.remove("moderate");
+        }
+        else if (quality.classList.contains("poor")){
+            quality.classList.remove("poor");
+        }
+        else if (quality.classList.contains("veryPoor")){
+            quality.classList.remove("veryPoor");
+        }
+        else {
+            quality.classList.remove("severe");
+        }
+        
+    }
+    
+    //replace classlist function
+   /* const replaceClassList = (quality, newClass) => {
+        let oldClass;
+        if (quality.classList.contains("excellent")){
+            oldClass = "excellent";
+        }
+        else if (quality.classList.contains("fine")){
+            oldClass = "fine";
+        }
+        else if (quality.classList.contains("moderate")){
+            oldClass = "moderate";
+        }
+        else if (quality.classList.contains("poor")){
+            oldClass = "poor";
+        }
+        else if (quality.classList.contains("veryPoor")){
+            oldClass = "veryPoor";
+        }
+        else {
+            oldClass = "severe";
+        }
+        console.log("oldclass= " + oldClass);
+        switch (oldClass) {
+            case "excellent":
+                quality.classList.replace(oldClass, newClass);
+                break;
+            case "fine":
+                quality.classList.replace(oldClass, newClass);
+                break;
+            case "moderate":
+                quality.classList.replace(oldClass, newClass);
+                break;
+            case "poor":
+                quality.classList.replace(oldClass, newClass);
+                break;
+            case "veryPoor":
+                quality.classList.replace(oldClass, newClass);
+                break;
+            case "severe":
+                quality.classList.replace(oldClass, newClass);
+                break;
+            default:
+                break;
+        }
+    }*/
 
+    //check values and set quality
     //co
     const coQuality = document.getElementById("co-quality");
+    removeClassLists(coQuality);
     if (coData <= 1000){
         coQuality.innerText = "Excellent";
         coQuality.classList.add("excellent");
@@ -220,6 +288,7 @@ const setData = (data) =>{
     }
     //no2
     const no2Quality = document.getElementById("no2-quality");
+    removeClassLists(no2Quality);
     if (no2Data <= 25){
         no2Quality.innerText = "Excellent";
         no2Quality.classList.add("excellent");
@@ -246,6 +315,7 @@ const setData = (data) =>{
     }
     //O3
     const o3Quality = document.getElementById("o3-quality");
+    removeClassLists(o3Quality);
     if (o3Data <= 33){
         o3Quality.innerText = "Excellent";
         o3Quality.classList.add("excellent");
@@ -272,6 +342,7 @@ const setData = (data) =>{
     }
     //SO2
     const so2Quality = document.getElementById("so2-quality");
+    removeClassLists(so2Quality);
     if (so2Data <= 25){
         so2Quality.innerText = "Excellent";
         so2Quality.classList.add("excellent");
@@ -298,6 +369,7 @@ const setData = (data) =>{
     }
     //PM2.5
     const pm25Quality = document.getElementById("pm25-quality");
+    removeClassLists(pm25Quality);
     if ( pm25Data <= 7){
         pm25Quality.innerText = "Excellent";
         pm25Quality.classList.add("excellent");
@@ -324,6 +396,7 @@ const setData = (data) =>{
     }
     //PM10
     const pm10Quality = document.getElementById("pm10-quality");
+    removeClassLists(pm10Quality);
     if ( pm10Data <= 12){
         pm10Quality.innerText = "Excellent";
         pm10Quality.classList.add("excellent");
@@ -350,6 +423,7 @@ const setData = (data) =>{
     }
     //NH3
     const nh3Quality = document.getElementById("nh3-quality");
+    removeClassLists(nh3Quality);
     if (nh3Data <= 3){
         nh3Quality.innerText = "Excellent";
         nh3Quality.classList.add("excellent");
