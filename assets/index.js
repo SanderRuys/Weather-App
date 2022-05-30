@@ -1,4 +1,5 @@
 import { Weather_API_key, PositionStack_API_Key } from './config.js';
+import { createWeather } from './createWeather.js';
 
 const main = document.querySelector("main");
 main.style.visibility = "hidden";
@@ -116,37 +117,7 @@ const setWeatherData = (data) => {
     }
 }
 
-const createWeather = (data, iconSrc, iconAlt, cityName) =>{
-    const weatherCard = document.querySelector(".weatherCard");
-    let code = `
-        <h1 id="city-name">${cityName}</h1>
-        <img src="${iconSrc}" alt="${iconAlt}" id="forecast-icon">
-        <p id="forecast-degrees">${data.current.temp} &#8451;</p>
-        <p id="forecast-description">${data.current.weather[0].description}</p>
-        <div class="feelsLike">
-            <img src="${iconSrc}" alt="${iconAlt}" class="smallIcon">
-            <p id="feels-like-text">Feels Like</p>
-            <p id="feels-like-degrees">${data.current.feels_like} &#8451;</p>
-        </div>
-        <div class="humidity">
-            <img src="assets/Humidity.png" alt="Humidity icon" class="smallIcon"">
-            <p id="humidity-text">Humidity</p>
-            <p id="humidity-percent">${data.current.humidity} &#37;</p>
-        </div>
-        <div class="wind">
-            <img src="assets/Wind.png" alt="Wind icon" class="smallIcon"">
-            <p id="wind-text">Wind</p>
-            <p id="wind-speed">${data.current.wind_speed} km&#47;h</p>
-        </div>
-        <div class="uvIndex">
-            <img src="assets/Sun.png" alt="Sun icon" class="smallIcon"">
-            <p id="uv-text">UV&#45;Index</p>
-            <p id="uv-index">${data.current.uvi}</p>
-        </div>
-        `;
-        weatherCard.innerHTML = code;
-        console.log("weathercard runt");
-}
+
  
 const setData = (data) =>{
     const airInfo = document.getElementById("air-info");
@@ -208,56 +179,9 @@ const setData = (data) =>{
         }
         else {
             quality.classList.remove("severe");
-        }
-        
+        }  
     }
     
-    //replace classlist function
-   /* const replaceClassList = (quality, newClass) => {
-        let oldClass;
-        if (quality.classList.contains("excellent")){
-            oldClass = "excellent";
-        }
-        else if (quality.classList.contains("fine")){
-            oldClass = "fine";
-        }
-        else if (quality.classList.contains("moderate")){
-            oldClass = "moderate";
-        }
-        else if (quality.classList.contains("poor")){
-            oldClass = "poor";
-        }
-        else if (quality.classList.contains("veryPoor")){
-            oldClass = "veryPoor";
-        }
-        else {
-            oldClass = "severe";
-        }
-        console.log("oldclass= " + oldClass);
-        switch (oldClass) {
-            case "excellent":
-                quality.classList.replace(oldClass, newClass);
-                break;
-            case "fine":
-                quality.classList.replace(oldClass, newClass);
-                break;
-            case "moderate":
-                quality.classList.replace(oldClass, newClass);
-                break;
-            case "poor":
-                quality.classList.replace(oldClass, newClass);
-                break;
-            case "veryPoor":
-                quality.classList.replace(oldClass, newClass);
-                break;
-            case "severe":
-                quality.classList.replace(oldClass, newClass);
-                break;
-            default:
-                break;
-        }
-    }*/
-
     //check values and set quality
     //co
     const coQuality = document.getElementById("co-quality");
@@ -448,7 +372,6 @@ const setData = (data) =>{
         nh3Quality.innerText = "Severe";
         nh3Quality.classList.add("severe");
     }
-
 } 
 
 cityInput.addEventListener("keypress", function(event) {
