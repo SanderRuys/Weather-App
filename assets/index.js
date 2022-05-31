@@ -1,5 +1,6 @@
 import { Weather_API_key, PositionStack_API_Key } from './config.js';
-import { createWeather } from './createWeather.js';
+import { addWeatherToHtml } from './addWeatherToHtml.js';
+import { removeClassLists } from './removeClassLists.js';
 
 const main = document.querySelector("main");
 main.style.visibility = "hidden";
@@ -57,8 +58,8 @@ async function getOneCallApi(url) {
     let data = await response.json();
     console.log(data);
 
-    setWeatherData(data);
-    createWeather(data, foreCastIconSrc, foreCastIconAlt, cityName);
+    setWeatherIcon(data);
+    addWeatherToHtml(data, foreCastIconSrc, foreCastIconAlt, cityName);
     console.log("WeatherData= " + foreCastIconSrc);
 }
 
@@ -78,7 +79,7 @@ async function getWeatherApi(url) {
     setData(data);
 }
 
-const setWeatherData = (data) => {
+const setWeatherIcon = (data) => {
     const currentWeatherIcon = data.current.weather[0].main;
     console.log("Weather Icon = " + currentWeatherIcon);
     switch (currentWeatherIcon) {
@@ -117,8 +118,6 @@ const setWeatherData = (data) => {
     }
 }
 
-
- 
 const setData = (data) =>{
     const airInfo = document.getElementById("air-info");
     //set tekst
@@ -159,28 +158,6 @@ const setData = (data) =>{
     let pm10Data = data.list[0].components.pm10;
     let nh3Data = data.list[0].components.nh3;
     
-    //TODO Check and remove classlist function
-    const removeClassLists = (quality) =>{
-        
-        if (quality.classList.contains("excellent")){
-            quality.classList.remove("excellent");
-        }
-        else if (quality.classList.contains("fine")){
-            quality.classList.remove("fine");
-        }
-        else if (quality.classList.contains("moderate")){
-            quality.classList.remove("moderate");
-        }
-        else if (quality.classList.contains("poor")){
-            quality.classList.remove("poor");
-        }
-        else if (quality.classList.contains("veryPoor")){
-            quality.classList.remove("veryPoor");
-        }
-        else {
-            quality.classList.remove("severe");
-        }  
-    }
     
     //check values and set quality
     //co

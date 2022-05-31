@@ -1,4 +1,4 @@
-export const createWeather = (data, iconSrc, iconAlt, cityName) =>{
+const addWeatherToHtml = (data, iconSrc, iconAlt, cityName) =>{
     const weatherCard = document.querySelector(".weatherCard");
     let code = `
         <h1 id="city-name">${cityName}</h1>
@@ -30,3 +30,6 @@ export const createWeather = (data, iconSrc, iconAlt, cityName) =>{
         console.log("weathercard runt");
 }
 
+export {
+    addWeatherToHtml
+}
