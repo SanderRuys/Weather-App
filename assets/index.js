@@ -2,6 +2,8 @@ import { Weather_API_key, PositionStack_API_Key } from './config.js';
 import { addWeatherToHtml } from './addWeatherToHtml.js';
 import { removeClassLists } from './removeClassLists.js';
 
+
+
 const main = document.querySelector("main");
 main.style.visibility = "hidden";
 const submitButton = document.getElementById("submit-button");
@@ -116,6 +118,9 @@ const setWeatherIcon = (data) => {
             foreCastIconAlt = "Icon of misty clouds";
             break;
     }
+    console.log("icon = " + foreCastIconSrc);
+    console.log("iconalt = "+ foreCastIconAlt);
+    
 }
 
 const setData = (data) =>{
@@ -135,7 +140,7 @@ const setData = (data) =>{
             airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="poor">poor</span>. `;
             break;
         default:
-            airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="Severe">very poor</span>. `;
+            airInfo.innerHTML = `The air quality in ${outputAdress} is  <span class="severe">very poor</span>. `;
             break;
     }
 
