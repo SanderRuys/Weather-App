@@ -51,7 +51,7 @@ async function getPositionApi(url) {
     // call weather API
     const oneCallApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely}&units=metric&appid=${Weather_API_key}`;
     getOneCallApi(oneCallApiUrl);
-    const weatherApiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${Weather_API_key}`;
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${Weather_API_key}`;
     getWeatherApi(weatherApiUrl);
 }
 

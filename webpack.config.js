@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, './src/app.js'),
+        main: path.resolve(__dirname, './scripts/index.js'),
         },
         output: {
         filename: '[name].bundle.js',
@@ -31,6 +31,7 @@ module.exports = {
               },
               { 
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                //use: ['file-loader'],
                 type: 'asset/resource',
               },
             ]
@@ -38,7 +39,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-        template: 'src/index.html'
+        template: './index.html'
         }),
     //new HtmlWebpackPlugin({
      // title: "Webpack Output",

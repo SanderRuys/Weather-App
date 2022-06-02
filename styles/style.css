@@ -7,7 +7,7 @@
 body{
     display: flex;
     justify-content: center;
-    background-image: url("./BackgroundClouds.jpg");
+    background-image: url("../assets/BackgroundClouds.jpg");
     background-position: center;
     background-repeat: no-repeat;
     align-items: center;
