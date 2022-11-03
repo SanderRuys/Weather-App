@@ -2,6 +2,7 @@ import { Weather_API_key, PositionStack_API_Key } from "./config.js";
 import { addWeatherToHtml } from "./addWeatherToHtml.js";
 import { removeClassLists } from "./removeClassLists.js";
 
+
 const main = document.querySelector("main");
 main.style.visibility = "hidden";
 const submitButton = document.getElementById("submit-button");
@@ -24,7 +25,7 @@ const getLocationCoordinates = () => {
   getPositionApi(positionStackApiUrl);
 };
 
-// Defining async function
+// Defining async function 
 async function getPositionApi(url) {
   // Storing response
   const response = await fetch(url);
